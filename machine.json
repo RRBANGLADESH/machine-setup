@@ -1,0 +1,20 @@
+{
+    "run_list": [ "recipe[mysql::server]", "recipe[mysql::client]",
+                    "recipe[mongodb::10gen_repo]", "recipe[mongo-setup]",
+                    "recipe[postgresql::server]", "recipe[rails-dependencies]",
+                    ],
+
+    "mysql": {  "server_root_password": "",
+                "server_repl_password": "",
+                "server_debian_password": "",
+                "allow_remote_root": true },
+
+    "postgresql": { "password": { "postgres": "postgres" } },
+
+    "user": { "name": "jitu" },
+    
+    "rails-projects": [{"name": "stubbles",
+                        "repo": "git@github.com:ashrafuzzaman/stubbles.git",
+                        "branch": "master"}]
+
+}
