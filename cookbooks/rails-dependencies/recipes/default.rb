@@ -30,3 +30,14 @@ node['rails-projects'].each do |proj|
     action :sync
   end
 end
+
+package "ubuntu-restricted-extras"
+package "openjdk-7-jdk"
+
+apt_repository 'vlc' do
+  uri "http://ppa:ed10vi86/video"
+  notifies :run, 'execute[apt-get update]', :immediately
+end
+
+package "vlc"
+package "gitg"
