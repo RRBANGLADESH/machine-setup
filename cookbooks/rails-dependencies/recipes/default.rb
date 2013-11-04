@@ -41,3 +41,15 @@ end
 
 package "vlc"
 package "gitg"
+
+chrome_file_path = '/tmp/google-chrome-stable_current_amd64.deb'
+
+remote_file chrome_file_path do
+  source "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+end
+
+bash 'install chrome' do
+  cwd ::File.dirname('/tmp')
+  code 'sudo dpkg -i google-chrome*.deb'
+  not_if { ::File.exists?(chrome_file_path) }
+end
