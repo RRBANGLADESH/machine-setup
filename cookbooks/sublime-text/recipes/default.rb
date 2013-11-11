@@ -1,6 +1,7 @@
-apt_repository 'sublime-text' do
-  uri "http://ppa:webupd8team/sublime-text-3"
-  notifies :run, 'execute[apt-get update]', :immediately
+Hotel.find(66).check_ins.find_in_batches do |group|
+	group.each { |c| c.destroy }
 end
 
-package "sublime-text-installer"
+
+CashCloseout.where(hotel_id: 66).where("created_at < ?", 1.days.ago.beginning_of_day)
+CashCounterTransaction.where(hotel_id: 66).where("created_at < ?", 1.days.ago.beginning_of_day)

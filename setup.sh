@@ -6,15 +6,13 @@
 # git clone git@git.tasawr.com:ashraf/moteel-setup.git
 # sudo ./setup_base.sh
 
-echo "Installing required libraries ..." &&
-sudo apt-get update &&
-sudo apt-get -y install aptitude git unzip wget &&
-# sudo apt-get -y install ruby1.9.3 &&
-# sudo gem install --no-rdoc --no-ri chef
-sudo aptitude install make
-\curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3 --gems=chef
-
-# sudo aptitude install -y ruby1.9.1 ruby1.9.1-dev make &&
+if ! test -f "chef-solo"; then
+    echo "Installing required libraries ..." &&
+    sudo apt-get update &&
+    sudo apt-get -y install aptitude git unzip wget &&
+    sudo aptitude install make
+    \curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3 --gems=chef
+fi &&
 
 cd cookbooks &&
 
